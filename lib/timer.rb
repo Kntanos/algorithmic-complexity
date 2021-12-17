@@ -12,7 +12,7 @@ class Timer
     array.method(function)
     end_time = Time.now
    
-    end_time - start_time
+    "%f" % (end_time - start_time)
   end
-
+ 
 end
