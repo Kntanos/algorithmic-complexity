@@ -8,11 +8,14 @@ class Timer
   end
 
   def evaluate
-    start_time = Time.now
+    @start_time = Time.now
     array.method(function)
-    end_time = Time.now
-   
-    "%f" % (end_time - start_time)
+    @end_time = Time.now
+  end
+
+  def diff_in_ms
+    evaluate
+    (@end_time - @start_time) * 1000.0
   end
  
 end
