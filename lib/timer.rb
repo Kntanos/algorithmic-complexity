@@ -1,21 +1,34 @@
 class Timer
 
-  attr_reader :function, :array
+  attr_reader :function, :sample_size
 
-  def initialize(function, size_of_array)
+  def initialize(function)
+    @sample_size = [10, 15, 20]
     @function = function.to_sym
-    @array = Array.new(size_of_array) { rand(0...9) }
   end
 
+  def setup
+    @test_sample = sample_size.map { |size| { size => (Array.new(size) { rand(0...9) })} }
+  end
+  
+  def throwaway_data
+    10.times do
+      @test_sample.map do |sample|
+        sample.values[0].method(function)
+      end
+    end
+  end
+  
   def evaluate
-    @start_time = Time.now
-    array.method(function)
-    @end_time = Time.now
-  end
+    setup
+    throwaway_data
 
-  def diff_in_ms
-    evaluate
-    (@end_time - @start_time) * 1000.0
+    results = @test_sample.map do |sample|
+      start_time = Time.now
+      sample.values[0].method(function)
+      end_time = Time.now
+
+      {sample.keys[0] => ((end_time - start_time) * 1000.0)}
+    end
   end
- 
 end
