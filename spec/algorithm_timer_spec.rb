@@ -24,4 +24,14 @@ RSpec.describe AlgorithmTimer do
       @test.test_array.last
     end
   end
+
+  describe '#timer' do
+    it 'returns time in float of milliseconds' do
+      @test = AlgorithmTimer.new('last')
+      @test.setup(3)
+      @test.timer
+      
+      expect(@test.time).to be_instance_of Float
+    end
+  end
 end

@@ -1,6 +1,6 @@
 class AlgorithmTimer
 
-  attr_reader :function, :data, :test_array
+  attr_reader :function, :data, :test_array, :time
 
   def initialize(function)
     @function = function.to_sym
@@ -35,6 +35,6 @@ class AlgorithmTimer
   end
 
   def export_csv
-    [sample_size, @time] # todo
+    [sample_size, time] # todo
   end
 end
