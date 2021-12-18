@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "C:/Users/kosta/OneDrive/Makers/algorithmic_complexity/spec/algorithm_timer_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/spec/algorithm_timer_spec.rb": {
         "lines": [
           1,
           null,
@@ -12,25 +12,34 @@
           1,
           null,
           1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
           1,
           null,
           null,
           null
         ]
       },
-      "C:/Users/kosta/OneDrive/Makers/algorithmic_complexity/lib/algorithm_timer.rb": {
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/lib/algorithm_timer.rb": {
         "lines": [
           1,
           null,
           1,
           null,
           1,
-          1,
-          1,
+          2,
+          2,
           null,
           null,
           1,
-          1012,
+          1016,
           null,
           null,
           1,
@@ -63,6 +72,6 @@
         ]
       }
     },
-    "timestamp": 1639837754
+    "timestamp": 1639847194
   }
 }
