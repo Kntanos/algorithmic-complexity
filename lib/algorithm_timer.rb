@@ -1,6 +1,6 @@
 class AlgorithmTimer
 
-  attr_reader :function, :data
+  attr_reader :function, :data, :test_array
 
   def initialize(function)
     @function = function.to_sym
@@ -13,13 +13,13 @@ class AlgorithmTimer
   
   def throwaway_data(throwaway_repeats)
     throwaway_repeats.times do
-      @test_array.method(function)
+      test_array.method(function)
     end
   end
   
   def timer 
     start_time = Time.now 
-    @test_array.method(function)
+    test_array.method(function)
     stop_time = Time.now
 
     @time = (stop_time - start_time) * 1000.0 # in milliseconds
