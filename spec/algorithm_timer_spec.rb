@@ -49,4 +49,26 @@ RSpec.describe AlgorithmTimer do
       expect(@test.time_diff).to be_instance_of Float
     end
   end
+
+  describe '#run_test' do
+    it 'runs the test the given number of times' do
+      @test = AlgorithmTimer.new('last')
+      @test.run_test(3, 3, 3)
+
+      expect(@test).to receive(:setup).with(3)
+      expect(@test).to receive(:throwaway_data).with(3)
+      expect(@test).to receive(:timer).exactly(3).times
+      expect(@test).to receive(:time_diff).exactly(3).times
+      expect(@test.data.length).to eq(3)
+
+      @test.setup(3)
+      @test.throwaway_data(3)
+      @test.timer
+      @test.timer
+      @test.timer
+      @test.time_diff
+      @test.time_diff
+      @test.time_diff
+    end
+  end
 end

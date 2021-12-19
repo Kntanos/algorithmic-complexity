@@ -27,12 +27,17 @@ class AlgorithmTimer
     @time = (@stop_time - @start_time) * 1000.0 # in milliseconds
   end
 
+  def collect_data
+    data.push(time)
+  end
+
   def run_test(sample_size, throwaway_repeats, repeats)
     setup(sample_size)
     throwaway_data(throwaway_repeats)
     repeats.times do
       timer
-      
+      time_diff
+      collect_data
     end
   end
 
