@@ -71,6 +71,7 @@ RSpec.describe AlgorithmTimer do
       expect(@test).to receive(:throwaway_data).with(3)
       expect(@test).to receive(:timer).exactly(3).times
       expect(@test).to receive(:time_diff).exactly(3).times
+      expect(@test).to receive(:export_csv).once
       expect(@test.data.length).to eq(3)
 
       @test.setup(3)
@@ -81,6 +82,7 @@ RSpec.describe AlgorithmTimer do
       @test.time_diff
       @test.time_diff
       @test.time_diff
+      @test.export_csv
     end
   end
 end

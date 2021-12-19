@@ -1,3 +1,5 @@
+require 'csv'
+
 class AlgorithmTimer
 
   attr_reader :function, :data, :test_array, :time
@@ -38,10 +40,16 @@ class AlgorithmTimer
       timer
       time_diff
       collect_data
+      export_csv
     end
   end
 
   def export_csv
-    [sample_size, time] # todo
+    CSV.open("#{test_array.length}_test_data.csv", 'w') do |csv|
+      csv << [test_array.length]
+      data.each do |data_point|
+        csv << [data_point]
+      end
+    end
   end
 end
