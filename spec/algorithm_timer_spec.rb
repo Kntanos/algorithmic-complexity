@@ -26,12 +26,27 @@ RSpec.describe AlgorithmTimer do
   end
 
   describe '#timer' do
+    it 'times the function' do
+      @test = AlgorithmTimer.new('last')
+      @test.setup(3)
+      @test.timer
+
+      expect(Time).to receive(:now).twice
+      expect(@test.test_array).to receive(:last).once
+
+      @test.test_array.last
+      Time.now
+      Time.now
+    end
+  end
+
+  describe '#time_diff' do
     it 'returns time in float of milliseconds' do
       @test = AlgorithmTimer.new('last')
       @test.setup(3)
       @test.timer
       
-      expect(@test.time).to be_instance_of Float
+      expect(@test.time_diff).to be_instance_of Float
     end
   end
 end

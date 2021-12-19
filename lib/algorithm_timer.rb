@@ -18,11 +18,13 @@ class AlgorithmTimer
   end
   
   def timer 
-    start_time = Time.now 
+    @start_time = Time.now 
     test_array.method(function)
-    stop_time = Time.now
+    @stop_time = Time.now
+  end
 
-    @time = (stop_time - start_time) * 1000.0 # in milliseconds
+  def time_diff
+    @time = (@stop_time - @start_time) * 1000.0 # in milliseconds
   end
 
   def run_test(sample_size, throwaway_repeats, repeats)
