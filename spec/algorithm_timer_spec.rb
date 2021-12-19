@@ -50,6 +50,18 @@ RSpec.describe AlgorithmTimer do
     end
   end
 
+  describe '#collect_data' do
+    it 'collects test data in an array' do
+      @test = AlgorithmTimer.new('last')
+      @test.setup(3)
+      @test.timer
+      @test.time_diff
+      @test.collect_data
+
+      expect(@test.data.length).to eq(1)
+    end
+  end
+
   describe '#run_test' do
     it 'runs the test the given number of times' do
       @test = AlgorithmTimer.new('last')
