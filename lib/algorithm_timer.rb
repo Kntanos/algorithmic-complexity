@@ -4,7 +4,7 @@ class AlgorithmTimer
   attr_reader :function, :data, :test_array, :time
 
   SAMPLE_SIZES = [*1..20].map{ |n| n * 50000}
-  THROWAWAY = 20
+  THROWAWAY = 100
 
   def initialize(function)
     @function = function.to_sym
@@ -12,7 +12,7 @@ class AlgorithmTimer
   end
 
   def setup(sample_size)
-    @test_array = Array.new(sample_size) { rand(0...9) }
+    @test_array = Array.new(sample_size) { rand(0...100) }
   end
   
   def throwaway_data
@@ -51,7 +51,7 @@ class AlgorithmTimer
       time_diff
       collect_data
     end
-    export_csv
+    export_csv(average_data)
     data.clear
   end
 
@@ -61,7 +61,7 @@ class AlgorithmTimer
     end
   end
 
-  def export_csv
+  def export_csv(average_data)
     CSV.open("#{function}_data.csv", 'a') do |csv|
       csv << [average_data].unshift(test_array.length)
     end
