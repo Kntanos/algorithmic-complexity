@@ -98,4 +98,18 @@ RSpec.describe AlgorithmTimer do
       end
     end
   end
+
+  describe '#run_together' do
+    let(:sample_size){2}
+    it 'runs the test for all sample sizes' do
+      test = AlgorithmTimer.new('last')
+      test.run_together(3)
+
+      expect(test).to receive(:run_test).with(sample_size, 3).exactly(3).times
+
+      3.times do
+        test.run_test(2, 3)
+      end
+    end
+  end
 end

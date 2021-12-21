@@ -39,7 +39,7 @@ class AlgorithmTimer
     data.sum(0.0)/data.size
   end
 
-  def run_test(sample_size, repeats)
+  def run_test(sample_size, repeats) # Keeping this method in case a sample size needs to be repeated separately
     setup(sample_size)
     throwaway_data
     repeats.times do
