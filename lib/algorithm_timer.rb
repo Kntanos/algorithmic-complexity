@@ -40,16 +40,13 @@ class AlgorithmTimer
       timer
       time_diff
       collect_data
-      export_csv
     end
+    export_csv
   end
 
   def export_csv
     CSV.open("#{test_array.length}_test_data.csv", 'w') do |csv|
-      csv << [test_array.length]
-      data.each do |data_point|
-        csv << data
-      end
+      csv << (data.unshift(test_array.length))
     end
   end
 end
