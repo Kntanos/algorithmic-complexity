@@ -19,7 +19,7 @@ RSpec.describe AlgorithmTimer do
       test.throwaway_data
       expect(test.test_array).to receive(:last).exactly(AlgorithmTimer::THROWAWAY).times
      
-      (AlgorithmTimer::THROWAWAY).times do
+      AlgorithmTimer::THROWAWAY.times do
         test.test_array.last
       end
     end
@@ -65,9 +65,9 @@ RSpec.describe AlgorithmTimer do
   describe '#average_data' do
     it 'returns the average of the data array' do
       test = AlgorithmTimer.new('last')
-      allow(test).to receive(:data){[2, 4, 6]}
+      allow(test).to receive(:data) { [3, 5, 4, 6, 2, 7, 1, 8] }
 
-      expect(test.average_data).to eq(4)
+      expect(test.average_data).to eq(3.15)
     end
   end
 
@@ -86,8 +86,8 @@ RSpec.describe AlgorithmTimer do
 
       test.setup(3)
       
-      (AlgorithmTimer::THROWAWAY).times do
-      test.throwaway_data
+      AlgorithmTimer::THROWAWAY.times do
+        test.throwaway_data
       end
       
       3.times do
@@ -100,7 +100,7 @@ RSpec.describe AlgorithmTimer do
   end
 
   describe '#run_together' do
-    let(:sample_size){2}
+    let(:sample_size) { 2 }
 
     it 'runs the test for all sample sizes' do
       test = AlgorithmTimer.new('last')

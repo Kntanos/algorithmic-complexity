@@ -36,7 +36,7 @@ class AlgorithmTimer
   end
 
   def average_data
-    data.sum(0.0)/data.size
+    (data.sort[data.length * 0.05...data.length * 0.95]).sum(0.0) / data.size * 0.90 # First remove 5% of top and bottom
   end
 
   def run_test(sample_size, repeats) # Keeping this method in case a sample size needs to be repeated separately
