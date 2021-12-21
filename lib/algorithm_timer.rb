@@ -48,7 +48,7 @@ class AlgorithmTimer
     CSV.open("#{test_array.length}_test_data.csv", 'w') do |csv|
       csv << [test_array.length]
       data.each do |data_point|
-        csv << [data_point]
+        csv << data
       end
     end
   end
