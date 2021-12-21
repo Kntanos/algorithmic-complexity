@@ -3,8 +3,8 @@ require 'csv'
 class AlgorithmTimer
   attr_reader :function, :data, :test_array, :time
 
-  SAMPLE_SIZES = [10, 20, 30]
-  THROWAWAY = 10
+  SAMPLE_SIZES = [*1..20].map{ |n| n * 10}
+  THROWAWAY = 20
 
   def initialize(function)
     @function = function.to_sym
@@ -36,7 +36,11 @@ class AlgorithmTimer
   end
 
   def average_data
-    (data.sort[data.length * 0.05...data.length * 0.95]).sum(0.0) / data.size * 0.90 # First remove 5% of top and bottom
+    remove_pc = 0.05
+    remove_min_max = data.length*remove_pc...data.length*(1 - remove_pc)
+    pc_data_remaining = 1 - 2*remove_pc
+
+    (data.sort[remove_min_max]).sum(0.0) / data.size * pc_data_remaining # First remove 5% of top and bottom
   end
 
   def run_test(sample_size, repeats) # Keeping this method in case a sample size needs to be repeated separately
