@@ -3,7 +3,7 @@ require 'csv'
 class AlgorithmTimer
   attr_reader :function, :data, :test_array, :time
 
-  SAMPLE_SIZES = [*1..20].map{ |n| n * 10000}
+  SAMPLE_SIZES = [*1..20].map{ |n| n * 50000}
   THROWAWAY = 20
 
   def initialize(function)
@@ -62,7 +62,7 @@ class AlgorithmTimer
   end
 
   def export_csv
-    CSV.open("test_data.csv", 'a') do |csv|
+    CSV.open("#{function}_data.csv", 'a') do |csv|
       csv << [average_data].unshift(test_array.length)
     end
   end
