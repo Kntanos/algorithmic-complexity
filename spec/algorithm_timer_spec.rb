@@ -101,6 +101,7 @@ RSpec.describe AlgorithmTimer do
 
   describe '#run_together' do
     let(:sample_size){2}
+
     it 'runs the test for all sample sizes' do
       test = AlgorithmTimer.new('last')
       test.run_together(3)
@@ -110,6 +111,12 @@ RSpec.describe AlgorithmTimer do
       3.times do
         test.run_test(2, 3)
       end
+    end
+  end
+
+  describe '#export_csv' do
+    xit 'exports a csv file with the results' do
+
     end
   end
 end
