@@ -3,7 +3,7 @@ require 'csv'
 class AlgorithmTimer
   attr_reader :function, :data, :test_array, :time
 
-  SAMPLE_SIZES = [*1..20].map{ |n| n * 10}
+  SAMPLE_SIZES = [*1..20].map{ |n| n * 10000}
   THROWAWAY = 20
 
   def initialize(function)
@@ -55,7 +55,7 @@ class AlgorithmTimer
     data.clear
   end
 
-  def run_together(repeats)
+  def run_all_samples(repeats)
     SAMPLE_SIZES.each do |sample_size|
       run_test(sample_size, repeats)
     end
