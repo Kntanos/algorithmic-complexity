@@ -59,7 +59,7 @@ class AlgorithmTimer
 
   def export_csv
     CSV.open("test_data.csv", 'a') do |csv|
-      csv << ([average_data].unshift(test_array.length))
+      csv << [average_data].unshift(test_array.length)
     end
   end
 end

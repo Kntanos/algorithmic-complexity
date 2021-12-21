@@ -16,12 +16,12 @@ RSpec.describe AlgorithmTimer do
       test = AlgorithmTimer.new('last')
       test.setup(3)
 
-      test.throwaway_data(3)
-      expect(test.test_array).to receive(:last).exactly(3).times
+      test.throwaway_data
+      expect(test.test_array).to receive(:last).exactly(AlgorithmTimer::THROWAWAY).times
      
-      test.test_array.last
-      test.test_array.last
-      test.test_array.last
+      (AlgorithmTimer::THROWAWAY).times do
+        test.test_array.last
+      end
     end
   end
 
@@ -62,27 +62,40 @@ RSpec.describe AlgorithmTimer do
     end
   end
 
+  describe '#average_data' do
+    it 'returns the average of the data array' do
+      test = AlgorithmTimer.new('last')
+      allow(test).to receive(:data){[2, 4, 6]}
+
+      expect(test.average_data).to eq(4)
+    end
+  end
+
   describe '#run_test' do
     it 'runs the test the given number of times' do
       test = AlgorithmTimer.new('last')
-      test.run_test(3, 3, 3)
+      test.run_test(3, 3)
 
       expect(test).to receive(:setup).with(3)
-      expect(test).to receive(:throwaway_data).with(3)
+      expect(test).to receive(:throwaway_data).exactly(AlgorithmTimer::THROWAWAY).times
       expect(test).to receive(:timer).exactly(3).times
       expect(test).to receive(:time_diff).exactly(3).times
-      expect(test).to receive(:export_csv).once
-      expect(test.data.length).to eq(3)
+      expect(test).to receive(:collect_data).exactly(3).times
+      expect(test).to receive(:export_csv).exactly(3).times
+      expect(test.data.length).to eq(0)
 
       test.setup(3)
-      test.throwaway_data(3)
-      test.timer
-      test.timer
-      test.timer
-      test.time_diff
-      test.time_diff
-      test.time_diff
-      test.export_csv
+      
+      (AlgorithmTimer::THROWAWAY).times do
+      test.throwaway_data
+      end
+      
+      3.times do
+        test.timer
+        test.time_diff
+        test.collect_data
+        test.export_csv
+      end
     end
   end
 end
