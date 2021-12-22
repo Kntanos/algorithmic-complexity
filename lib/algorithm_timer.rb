@@ -1,38 +1,35 @@
 require 'csv'
 require_relative './data'
+require_relative './sample'
 
 class AlgorithmTimer
-  attr_reader :function, :data, :test_array, :time
+  attr_reader :function, :data, :sample, :time
 
-  SAMPLE_SIZES = [*1..20].map { |n| n * 50_000 }
   THROWAWAY = 20
 
-  def initialize(function, data = Data.new)
+  def initialize(function, data = Data.new, sample = Sample.new)
     @function = function.to_sym
     @data = data
-  end
-
-  def setup(sample_size)
-    @test_array = Array.new(sample_size) { rand(0...100) }
+    @sample = sample
   end
   
   def throwaway_data
     THROWAWAY.times do
-      test_array.method(function).call
+      sample.sample_data.method(function).call
     end
   end
   
   def timer 
     start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    test_array.method(function).call
+    sample.sample_data.method(function).call
     stop = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
     @time = (stop - start) * 1000.0 # in milliseconds
   end
 
   def run_all_samples(repeats)
-    SAMPLE_SIZES.each do |sample_size|
-      setup(sample_size)
+    Sample::SAMPLE_SIZES.each do |sample_size|
+      sample.setup(sample_size)
       throwaway_data
       repeats.times do
         timer
@@ -45,7 +42,7 @@ class AlgorithmTimer
 
   def export_csv
     CSV.open("#{function}_function.csv", 'a') do |csv|
-      csv << [data.calc_median].unshift(test_array.length)
+      csv << [data.calc_median].unshift(sample.sample_data.length)
     end
   end
 end
