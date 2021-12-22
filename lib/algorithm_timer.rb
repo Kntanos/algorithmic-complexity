@@ -1,16 +1,18 @@
 require 'csv'
 require_relative './data'
 require_relative './sample'
+require_relative './stopwatch'
 
 class AlgorithmTimer
-  attr_reader :function, :data, :sample, :time
+  attr_reader :function, :data, :sample, :stopwatch
 
   THROWAWAY = 20
 
-  def initialize(function, data = Data.new, sample = Sample.new)
+  def initialize(function, data = Data.new, sample = Sample.new, stopwatch = Stopwatch.new)
     @function = function.to_sym
     @data = data
     @sample = sample
+    @stopwatch = stopwatch
   end
   
   def throwaway_data
@@ -18,22 +20,14 @@ class AlgorithmTimer
       sample.sample_data.method(function).call
     end
   end
-  
-  def timer 
-    start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    sample.sample_data.method(function).call
-    stop = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
-    @time = (stop - start) * 1000.0 # in milliseconds
-  end
-
-  def run_all_samples(repeats)
+  def run_samples(repeats)
     Sample::SAMPLE_SIZES.each do |sample_size|
       sample.setup(sample_size)
       throwaway_data
       repeats.times do
-        timer
-        data.collect_data(time)
+        stopwatch.timer(sample.sample_data, function)
+        data.collect(stopwatch.time)
       end
       export_csv
       data.data_set.clear

@@ -5,7 +5,7 @@ class Data
     @data_set = []
   end
 
-  def collect_data(time)
+  def collect(time)
     data_set.push(time)
   end
 
