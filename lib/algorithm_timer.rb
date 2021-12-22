@@ -1,14 +1,15 @@
 require 'csv'
+require_relative './data'
 
 class AlgorithmTimer
-  attr_reader :function, :data, :test_array
+  attr_reader :function, :data, :test_array, :time
 
   SAMPLE_SIZES = [*1..20].map { |n| n * 50_000 }
   THROWAWAY = 20
 
-  def initialize(function)
+  def initialize(function, data = Data.new)
     @function = function.to_sym
-    @data = []
+    @data = data
   end
 
   def setup(sample_size)
@@ -29,33 +30,22 @@ class AlgorithmTimer
     @time = (stop - start) * 1000.0 # in milliseconds
   end
 
-  def collect_data
-    data.push(@time)
-  end
-
-  def calc_median
-    # return nil if data.empty?
-    sorted = data.sort
-    len = sorted.length
-    (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
-  end
-
   def run_all_samples(repeats)
     SAMPLE_SIZES.each do |sample_size|
       setup(sample_size)
       throwaway_data
       repeats.times do
         timer
-        collect_data
+        data.collect_data(time)
       end
       export_csv
-      data.clear
+      data.data_set.clear
     end
   end
 
   def export_csv
-    CSV.open("#{function}_data.csv", 'a') do |csv|
-      csv << [calc_median].unshift(test_array.length)
+    CSV.open("#{function}_function.csv", 'a') do |csv|
+      csv << [data.calc_median].unshift(test_array.length)
     end
   end
 end
