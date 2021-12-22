@@ -2,17 +2,24 @@ require 'csv'
 require_relative './data'
 require_relative './sample'
 require_relative './stopwatch'
+require_relative './exporter'
 
 class AlgorithmTimer
-  attr_reader :function, :data, :sample, :stopwatch
+  attr_reader :function, :data, :sample, :stopwatch, :exporter
 
   THROWAWAY = 20
 
-  def initialize(function, data = Data.new, sample = Sample.new, stopwatch = Stopwatch.new)
+  def initialize(function, 
+                data = Data.new,
+                sample = Sample.new, 
+                stopwatch = Stopwatch.new,
+                exporter = Exporter.new)
+
     @function = function.to_sym
     @data = data
     @sample = sample
     @stopwatch = stopwatch
+    @exporter = exporter
   end
   
   def throwaway_data
@@ -29,14 +36,8 @@ class AlgorithmTimer
         stopwatch.timer(sample.sample_data, function)
         data.collect(stopwatch.time)
       end
-      export_csv
+      exporter.export_csv(function.to_s, data.calc_median, sample.sample_data.length)
       data.data_set.clear
-    end
-  end
-
-  def export_csv
-    CSV.open("#{function}_function.csv", 'a') do |csv|
-      csv << [data.calc_median].unshift(sample.sample_data.length)
     end
   end
 end
