@@ -62,19 +62,14 @@ RSpec.describe AlgorithmTimer do
     end
   end
 
-  describe '#average_data' do
-    it 'returns the average of the data array' do
-      test = AlgorithmTimer.new('last')
-      allow(test).to receive(:data) { [3, 5, 4, 6, 2, 7, 1, 8] }
-
-      expect(test.average_data).to eq(3.15)
-    end
+  describe '#calc_median' do
+ 
   end
 
-  describe '#run_test' do
+  describe '#run_all_samples' do
     it 'runs the test the given number of times' do
       test = AlgorithmTimer.new('last')
-      test.run_test(3, 3)
+      test.run_all_samples(3)
 
       expect(test).to receive(:setup).with(3)
       expect(test).to receive(:throwaway_data).exactly(AlgorithmTimer::THROWAWAY).times
@@ -95,21 +90,6 @@ RSpec.describe AlgorithmTimer do
         test.time_diff
         test.collect_data
         test.export_csv
-      end
-    end
-  end
-
-  describe '#run_all_samples' do
-    let(:sample_size) { 2 }
-
-    it 'runs the test for all sample sizes' do
-      test = AlgorithmTimer.new('last')
-      test.run_all_samples(3)
-
-      expect(test).to receive(:run_test).with(sample_size, 3).exactly(3).times
-
-      3.times do
-        test.run_test(2, 3)
       end
     end
   end
