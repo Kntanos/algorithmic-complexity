@@ -1,5 +1,4 @@
-require ('algorithm_timer')
-require ('data')
+require 'data'
 
 RSpec.describe Data do
  describe '.collect' do
