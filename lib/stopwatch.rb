@@ -1,8 +1,16 @@
 class Stopwatch
   attr_reader :time
 
+  THROWAWAY_RUNS = 20
+
   def initialize
     @time = nil
+  end
+
+  def throwaway_data(sample, function)
+    THROWAWAY_RUNS.times do
+      sample.method(function).call
+    end
   end
 
   def timer(sample, function)
