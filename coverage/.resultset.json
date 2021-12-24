@@ -56,7 +56,6 @@
           1,
           1,
           1,
-          null,
           1,
           1,
           null,
@@ -83,8 +82,56 @@
           null,
           null
         ]
+      },
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/spec/stopwatch_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/lib/stopwatch.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          20,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1640298733
+    "timestamp": 1640351186
   }
 }
