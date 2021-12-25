@@ -1,4 +1,5 @@
 require 'stopwatch'
+require 'timecop'
 
 RSpec.describe Stopwatch do
   describe '.throwaway_data' do
@@ -11,6 +12,20 @@ RSpec.describe Stopwatch do
       subject.throwaway_data(sample, function)
 
       expect(sample).to have_received(:function).exactly(Stopwatch::THROWAWAY_RUNS).times
+    end
+  end
+
+  describe '.timer' do
+    let(:function){'function'}
+
+    it 'returns the time difference in milliseconds' do
+      sample = double('sample')
+      allow(sample).to receive(:function)
+      
+      subject.timer(sample, function)
+
+      expect(subject.time).to be_instance_of Float
+      expect(sample).to have_received(:function).once
     end
   end
 end
