@@ -1,5 +1,4 @@
 require 'stopwatch'
-require 'timecop'
 
 RSpec.describe Stopwatch do
   describe '.throwaway_data' do
