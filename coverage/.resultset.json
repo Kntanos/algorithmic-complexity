@@ -1,27 +1,54 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/spec/data_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/spec/algorithm_timer_spec.rb": {
         "lines": [
           1,
           null,
           1,
           1,
           1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/lib/algorithm_timer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
           1,
           null,
           1,
           null,
           null,
           null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
           null,
           1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
           null,
           null,
           null
@@ -49,6 +76,88 @@
           null
         ]
       },
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/lib/sample.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          21,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          6,
+          null,
+          null
+        ]
+      },
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/lib/stopwatch.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          20,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/lib/exporter.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/spec/data_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/kostas/OneDrive/Makers/algorithmic_complexity/spec/exporter_spec.rb": {
         "lines": [
           1,
@@ -64,18 +173,6 @@
           1,
           2,
           null,
-          null,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/lib/exporter.rb": {
-        "lines": [
-          1,
-          null,
-          1,
           1,
           1,
           null,
@@ -96,23 +193,6 @@
           1,
           1,
           null,
-          null,
-          null
-        ]
-      },
-      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/lib/sample.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          21,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          6,
           null,
           null
         ]
@@ -150,35 +230,8 @@
           null,
           null
         ]
-      },
-      "/Users/kostas/OneDrive/Makers/algorithmic_complexity/lib/stopwatch.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          1,
-          20,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null
-        ]
       }
     },
-    "timestamp": 1640439293
+    "timestamp": 1640516839
   }
 }

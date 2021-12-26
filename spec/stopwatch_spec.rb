@@ -2,7 +2,7 @@ require 'stopwatch'
 
 RSpec.describe Stopwatch do
   describe '.throwaway_data' do
-    let(:function){'function'}
+    let(:function) { 'function' }
 
     it 'runs the given method THROWAWAY_RUNS times for a given sample' do
       sample = double('sample')
@@ -15,7 +15,7 @@ RSpec.describe Stopwatch do
   end
 
   describe '.timer' do
-    let(:function){'function'}
+    let(:function) { 'function' }
 
     it 'returns the time difference in milliseconds' do
       sample = double('sample')

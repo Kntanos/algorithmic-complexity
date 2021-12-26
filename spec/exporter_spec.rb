@@ -10,8 +10,9 @@ RSpec.describe Exporter do
 
       string = ""
       CSV.open('last_function.csv', 'r') { |csv| string << csv.first.join(", ") } 
-      
+
       expect(string).to eq(expected)
+      File.delete('last_function.csv')
     end
   end
 end
