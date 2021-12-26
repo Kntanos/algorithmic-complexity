@@ -17,8 +17,11 @@ To use the application on the command line, run:
 > require './lib/algorithm_timer'
 ```
 Create a new object e.g. *timer* and give it as arguement the name of the function you want to test as a sting e.g. "reverse"
+
 `> timer = AlgorithmicTimer("reverse")`
+
 Then generate the data by running:
+
 `> timer.run_samples(number_of_repeats)`
 
 The application will generate a csv file named **'reverse_function.csv'**
